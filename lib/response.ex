@@ -5,10 +5,10 @@ defmodule HTTP.Response do
   defstruct [
     :status,
     :body,
-    headers: %{},
+    headers: [],
   ]
 
-  @type headers :: %{optional(String.t) => [String.t]}
+  @type headers() :: [{header_name :: String.t(), header_value :: String.t()}]
 
   @type t(body) :: %__MODULE__{
     status: 100..999,
