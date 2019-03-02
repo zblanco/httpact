@@ -1,4 +1,4 @@
-defmodule HTTP.Response do
+defmodule HTTPact.Response do
   @moduledoc """
   A generic response to an HTTP Request.
   """
