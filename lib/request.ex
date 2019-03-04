@@ -1,6 +1,6 @@
 defmodule HTTPact.Request do
   @moduledoc """
-  A generic HTTP request that can be executed by an HTTP Adapter.
+  A generic HTTP request that can be executed by an HTTP Client.
   """
   defstruct [
     :method,

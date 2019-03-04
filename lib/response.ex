@@ -1,6 +1,6 @@
 defmodule HTTPact.Response do
   @moduledoc """
-  A generic response to an HTTP Request.
+  A generic Response to an HTTP Request returned by an HTTPact.Client implementation.
   """
   defstruct [
     :status,
