@@ -3,6 +3,9 @@ defmodule HTTPact do
   An HTTP Contract used to decouple REST API Wrapper libraries from HTTP Client implementations.
   """
 
+  def execute(%HTTPact.Request{http_client: client} = request) when is_function(client) do
+    client.(request)
+  end
   def execute(%HTTPact.Request{http_client: client} = request) do
     client.execute(request)
   end
