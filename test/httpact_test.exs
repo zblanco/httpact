@@ -11,11 +11,11 @@ defmodule HTTPactTest do
       path: "https://testsite.test/tests",
       headers: [{"test", "header"}],
     } ->
-      %Response{
+      {:ok, %Response{
         status: 200,
         body: "it's kind of alive!",
         headers: [{"test", "header"}],
-      }
+      }}
     end
 
     request = %Request{
@@ -26,11 +26,11 @@ defmodule HTTPactTest do
       http_client: test_client,
     }
 
-    assert HTTPact.execute(request) == %Response{
+    assert HTTP.execute(request) == {:ok, %Response{
       status: 200,
       body: "it's kind of alive!",
       headers: [{"test", "header"}],
-    }
+    }}
   end
 
   test "We can test an HTTP Client implementation by setting up a simple test server" do
