@@ -3,7 +3,7 @@ defmodule HTTPactTest do
   doctest HTTPact
   HTTPact.{Request, Response}
 
-  test "We can mock an HTTP Client with anonymous functions for testing API Wrappers " do
+  test "We can mock an HTTP Client with anonymous functions for testing API Wrappers" do
     # Build a function that knows how to return responses from matched requests
     test_client = fn %Request{
       method: :get,
@@ -26,7 +26,7 @@ defmodule HTTPactTest do
       http_client: test_client,
     }
 
-    assert HTTP.execute(request) == {:ok, %Response{
+    assert HTTPact.execute(request) == {:ok, %Response{
       status: 200,
       body: "it's kind of alive!",
       headers: [{"test", "header"}],

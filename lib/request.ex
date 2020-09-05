@@ -7,7 +7,6 @@ defmodule HTTPact.Request do
     :path,
     :params,
     :body,
-    :http_client,
     options: [],
     headers: [],
   ]
@@ -24,10 +23,6 @@ defmodule HTTPact.Request do
   @type path() :: String.t()
   @type params() :: %{optional(String.t()) => String.t()}
   @type headers() :: [{header_name :: String.t(), header_value :: String.t()}]
-  @typedoc """
-  A Module or Function that knows how to use a `Request`.
-  """
-  @type http_client() :: module() | function()
 
   @type t() :: %__MODULE__{
     method: method(),
@@ -35,9 +30,7 @@ defmodule HTTPact.Request do
     params: params(),
     body: any(),
     headers: headers(),
-    http_client: http_client(),
     options: Keyword.t()
   }
 
 end
-
