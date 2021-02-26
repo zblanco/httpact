@@ -24,12 +24,14 @@ defmodule HTTPact do
   @spec execute(Request.t() | command(), http_client()) :: any
   def execute(%Request{} = request, client) when is_function(client) do
     client.(request)
-    |>Entity.from_response()
+    |> Entity.from_response()
   end
+
   def execute(%Request{} = request, client) when is_atom(client) do
     client.execute(request)
     |> Entity.from_response()
   end
+
   def execute(command, client) do
     Command.to_request(command)
     |> execute(client)

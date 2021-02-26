@@ -5,14 +5,14 @@ defmodule HTTPact.Response do
   defstruct [
     :status,
     :body,
-    headers: [],
+    headers: []
   ]
 
   @type headers() :: [{header_name :: String.t(), header_value :: String.t()}]
 
   @type t(body) :: %__MODULE__{
-    status: 100..999,
-    body: body,
-    headers: headers,
-  }
+          status: 100..999,
+          body: body,
+          headers: headers
+        }
 end

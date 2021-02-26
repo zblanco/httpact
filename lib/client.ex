@@ -4,8 +4,8 @@ defmodule HTTPact.Client do
   """
   alias HTTPact.{Request, Response}
 
-  @callback execute(Request.t) :: 
-    {:ok, Response.t} 
-    | {:error, Exception.t} 
-    | {:error, String.t()}
+  @callback execute(Request.t()) ::
+              {:ok, Response.t()}
+              | {:error, Exception.t()}
+              | {:error, String.t()}
 end
