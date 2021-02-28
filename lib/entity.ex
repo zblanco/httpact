@@ -6,10 +6,6 @@ defprotocol HTTPact.Entity do
   def from_response(response, source_command)
 end
 
-defimpl HTTPact.Entity, for: Any do
-  def from_response(response, _), do: response
-end
-
 defimpl HTTPact.Entity, for: HTTPact.Request do
-  def from_response(request, _), do: request
+  def from_response(response, %HTTPact.Request{}), do: response
 end
