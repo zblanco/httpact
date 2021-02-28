@@ -25,10 +25,10 @@ defmodule HTTPactTest do
       headers: [{"test", "header"}],
     }
 
-    assert HTTPact.execute(request, test_client) == {:ok, %Response{
+    assert HTTPact.execute(request, test_client) == %Response{
       status: 200,
       body: "it's kind of alive!",
       headers: [{"test", "header"}],
-    }}
+    }
   end
 end
