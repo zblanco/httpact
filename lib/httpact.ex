@@ -23,13 +23,21 @@ defmodule HTTPact do
 
   @spec execute(Request.t() | command(), http_client()) :: any
   def execute(%Request{} = request, client) when is_function(client) do
-    response = client.(request)
-    Entity.from_response(request, response)
+    with {:ok, response} <- client.(request) do
+      Entity.from_response(request, response)
+    else
+      {:error, _msg} = error -> error
+      :error -> {:error, "An unknown error occurred with the given HTTPact client"}
+    end
   end
 
   def execute(%Request{} = request, client) when is_atom(client) do
-    response = client.execute(request)
-    Entity.from_response(request, response)
+    with {:ok, response} <- client.execute(request) do
+      Entity.from_response(request, response)
+    else
+      {:error, _msg} = error -> error
+      :error -> {:error, "An unknown error occurred with the client: #{Atom.to_string(client)}"}
+    end
   end
 
   def execute(command, client) do
